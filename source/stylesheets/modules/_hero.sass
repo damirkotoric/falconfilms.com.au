@@ -1,21 +1,40 @@
 .hero
   background: $violet
-  height: 95vh
+  height: 70vh
   overflow: hidden
+  user-select: none
+  -ms-user-select: none
+  -webkit-user-select: none
+  +susy-breakpoint($breakpoint-1...)
+    height: 95vh
 
-  img
-    position: absolute
-    left: 50%
-    top: 50%
+.hero__logo
+  position: absolute
+  left: 50%
+  top: 50%
+  margin-left: -80px
+  margin-top: -150px
+  opacity: 1
+  width: 160px
+  z-index: 2
+  +susy-breakpoint($breakpoint-1...)
     margin-left: -100px
     margin-top: -140px
-    opacity: 1
     width: 200px
-    z-index: 2
 
-  video
-    object-fit: cover
-    opacity: 0.2
-    height: 100%
-    max-width: 100%
-    width: 100%
+.hero__image, .hero__video
+  min-height: 100%
+  max-width: 100%
+  width: 100%
+  object-fit: cover
+  opacity: 0.2
+
+.hero__image
+  display: none
+  .touchevents &
+    display: block
+
+.hero__video
+  display: none
+  .no-touchevents &
+    display: block
