@@ -6,8 +6,41 @@
 @import "utilities/responsive"
 @import "utilities/reset"
 @import "utilities/colors"
+@import "utilities/helpers"
+
 @import "modules/hero"
+@import "modules/introduction"
 
 @import "vendor/polyfill.object-fit"
 
 body
+  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif
+  text-align: center
+
+h1
+  color: $violet
+  font-size: 30px
+  font-weight: 200
+  line-height: 1.3em
+  margin-bottom: 10px
+  +susy-breakpoint($breakpoint-2...)
+    font-size: 50px
+    margin-bottom: 30px
+
+p
+  color: $grey
+  font-size: 16px
+  font-weight: 200
+  line-height: 1.5
+  +susy-breakpoint($breakpoint-2...)
+    font-size: 20px
+
+a
+  color: $blue
+  text-decoration: none
+  transition: 0.2s all
+  &:hover
+    color: darken($blue, 10%)
+
+img
+  max-width: 100%
