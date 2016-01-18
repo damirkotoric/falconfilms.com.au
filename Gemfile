@@ -13,6 +13,7 @@ gem 'middleman', '>= 4.0.0'
 gem 'middleman-livereload'
 
 gem 'middleman-deploy', '~> 2.0.0.pre.alpha'
+gem "middleman-favicon-maker", "4.0.1.beta.1"
 gem "sass"
 gem "breakpoint"
 gem "susy"

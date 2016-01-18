@@ -41,6 +41,18 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
+
+  # https://github.com/follmann/middleman-favicon-maker
+  activate :favicon_maker, :icons => {
+    "images/_favicon_template.svg" => [
+      { icon: "images/apple-touch-icon-152x152-precomposed.png" },
+      { icon: "images/apple-touch-icon-144x144-precomposed.png" },
+      { icon: "images/apple-touch-icon-114x114-precomposed.png" },
+      { icon: "images/apple-touch-icon-72x72-precomposed.png" },
+      { icon: "images/favicon.png", size: "32x32" },
+      { icon: "images/favicon.ico", size: "64x64,32x32,24x24,16x16" },
+    ]
+  }
 end
 
 activate :deploy do |deploy|
