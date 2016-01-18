@@ -1,0 +1,50 @@
+.package
+  +susy-breakpoint($up-to-breakpoint-3...)
+    +container
+    padding: 30px
+  +susy-breakpoint($breakpoint-3...)
+    +span(4 of 12)
+  > div
+    border: 1px solid $grey-light
+    padding: 10px 10px 60px
+    position: relative
+    +susy-breakpoint($breakpoint-3...)
+      min-height: 600px
+      padding: 60px 10px
+
+.package__name
+  color: $violet
+  font-weight: 400
+  +susy-breakpoint($up-to-breakpoint-3...)
+    margin-bottom: 0
+  +susy-breakpoint($breakpoint-2...)
+    padding-bottom: 10px
+
+.package__price
+  color: $violet
+  font-size: 50px
+  +susy-breakpoint($breakpoint-2...)
+    padding-bottom: 10px
+
+.package__list
+  color: $grey
+  list-style: none
+  > li
+    padding-bottom: 10px
+
+.package__button
+  background: $blue
+  background: linear-gradient(to right, lighten($blue, 10%) 0%, $blue 100%)
+  color: $white
+  display: block
+  font-size: 20px
+  font-weight: 300
+  margin-top: 10px
+  padding: 17px 20px 20px
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  &:hover
+    background: linear-gradient(to right, $blue 0%, darken($blue, 5%) 100%)
+    color: $white
