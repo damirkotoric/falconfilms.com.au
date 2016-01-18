@@ -8,8 +8,14 @@
 @import "utilities/colors"
 @import "utilities/helpers"
 
+@import "modules/standard_section"
 @import "modules/hero"
+@import "modules/icon"
 @import "modules/introduction"
+@import "modules/showcases"
+@import "modules/showcase"
+@import "modules/equipment"
+@import "modules/features_list"
 
 @import "vendor/polyfill.object-fit"
 
@@ -17,23 +23,33 @@ body
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif
   text-align: center
 
-h1
-  color: $violet
-  font-size: 30px
+h1, h2, h3
   font-weight: 200
+
+h1, h2
+  color: $violet
+  font-size: 25px
   line-height: 1.3em
   margin-bottom: 10px
   +susy-breakpoint($breakpoint-2...)
     font-size: 50px
     margin-bottom: 30px
 
+h3
+  color: $grey
+  font-size: 18px
+  +susy-breakpoint($breakpoint-2...)
+    font-size: 25px
+
 p
   color: $grey
-  font-size: 16px
-  font-weight: 200
+  font-size: 14px
+  font-weight: 300
   line-height: 1.5
+  margin-bottom: 10px
   +susy-breakpoint($breakpoint-2...)
     font-size: 20px
+    font-weight: 200
 
 a
   color: $blue

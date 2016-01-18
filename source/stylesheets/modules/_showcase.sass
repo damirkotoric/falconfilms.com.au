@@ -1,0 +1,44 @@
+.showcase
+  padding-bottom: 60px
+  overflow: hidden
+  &:last-child
+    padding-bottom: 0
+  +susy-breakpoint($breakpoint-2...)
+    &, &:last-child
+      padding-bottom: 120px
+
+.showcase__intro
+  @extend .standard-section
+
+.showcase__gallery
+  +container
+  padding-top: 10px
+  img
+    display: none
+    &:nth-child(1)
+      display: block
+      margin: 0 auto
+  +susy-breakpoint($breakpoint-2...)
+    padding-top: 30px
+    img
+      &:nth-child(1)
+        +span(7 of 12)
+        margin-bottom: 3%
+      &:nth-child(2)
+        display: block
+        +span(5 of 12)
+        float: right
+        margin-bottom: 3%
+        margin-top: 60px
+      &:nth-child(3)
+        display: block
+        +span(4 of 12)
+        +post(1 of 12)
+        float: right
+      &:nth-child(4)
+        display: block
+        +span(2 of 12)
+        +pre(2 of 12)
+      &:nth-child(5)
+        display: block
+        +span(3 of 12)

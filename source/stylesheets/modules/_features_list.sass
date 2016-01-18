@@ -1,0 +1,26 @@
+.features-list
+  color: $grey-darker
+
+.features-list__item
+  list-style: none
+  padding: 0 60px
+  +susy-breakpoint($breakpoint-2...)
+    display: inline-block
+    min-width: 250px
+  i
+    &:nth-child(1), &:nth-child(2)
+      font-style: normal
+      font-weight: 200
+      text-transform: uppercase
+    &:nth-child(1)
+      font-size: 30px
+      +susy-breakpoint($breakpoint-2...)
+        font-size: 50px
+    &:nth-child(2)
+      +susy-breakpoint($breakpoint-2...)
+        font-size: 35px
+  span
+    font-weight: 200
+    margin-top: 10px
+    +susy-breakpoint($breakpoint-2...)
+      display: block

@@ -1,17 +1,12 @@
 .introduction
-  +container
-  margin-top: 30px
-  margin-bottom: 30px
+  overflow: hidden
+  padding-top: 30px
   position: relative
   +susy-breakpoint($breakpoint-2...)
-    margin-top: 60px
-    margin-bottom: 60px
+    padding-top: 60px
 
-.introduction__copy
-  +pad(2%)
-  p
-    +susy-breakpoint($breakpoint-2...)
-      +pad(2 of 12)
+.introduction__intro
+  @extend .standard-section
 
 .introduction__hero
   +pad(20px)
@@ -22,16 +17,18 @@
 
 .introduction__image
   display: block
-  margin-top: 10px
+  margin: 10px auto 0
   +susy-breakpoint($breakpoint-2...)
     margin-top: 0
 
 .introduction__shadow
   display: block
   height: 53px
-  max-width: 110%
   width: 1320px
   position: absolute
   bottom: 0
-  left: -5%
+  left: 0
+  right: 0
+  margin-left: auto
+  margin-right: auto
   z-index: 10
