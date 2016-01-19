@@ -10,3 +10,8 @@ $breakpoint-4: 1600px, 12
 .is-hidden-breakpoint-1-and-above
   +susy-breakpoint($breakpoint-1...)
     display: none
+
+.is-visible-breakpoint-3-and-above
+  display: none
+  +susy-breakpoint($breakpoint-3...)
+    display: block
