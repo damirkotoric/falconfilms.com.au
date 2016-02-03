@@ -10,24 +10,16 @@
     <!-- Use title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "Falcon Films" %></title>
 
-    <link href='//fonts.googleapis.com/css?family=Lato:200,300,400' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:200,300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
     <%= stylesheet_link_tag :index %>
-    <%= javascript_include_tag :all, :modernizr %>
+    <%= javascript_include_tag :jquery, :all, :modernizr %>
   </head>
 
   <body class="<%= page_classes %>">
     <%= yield %>
   </body>
-  <script type="text/javascript" src="/javascripts/polyfillobjectfit.js"></script>
-  <script type="text/javascript">
-  objectFit.polyfill({
-      selector: 'video', // this can be any CSS selector
-      fittype: 'cover', // either contain, cover, fill or none
-      disableCrossDomain: 'true' // either 'true' or 'false' to not parse external CSS files.
-  });
-  </script>
   <script>
     // Google Analytics
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
