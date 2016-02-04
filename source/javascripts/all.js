@@ -35,6 +35,7 @@ function modalTrigger(event) {
   $trigger = $(event.currentTarget)
   $packageSelectBox = $("#package")
   $("html").toggleClass("-modal-visible")
+  window.scrollTo(0, 0)
   switch ($trigger.attr("id")) {
     case "enquire-free":
       $packageSelectBox.prop("selectedIndex", 0)
@@ -52,6 +53,7 @@ function modalTrigger(event) {
 function closeModal(event) {
   event.preventDefault()
   $("html").removeClass("-modal-visible")
+  $('html, body').scrollTop($("#pricing").offset().top);
 }
 
 function submitForm(event) {

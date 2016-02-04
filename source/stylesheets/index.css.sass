@@ -30,8 +30,8 @@
 
 html
   &.-modal-visible
-    &, body
-      overflow: hidden
+    .page
+      display: none
 
 body
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif
@@ -71,8 +71,10 @@ label
 
 input, textarea, select
   border: 1px solid lighten($grey, 40%)
+  border-radius: 0
   font-weight: 300
   padding: 15px 20px
+  -webkit-appearance: none
   &:focus
     outline: none
     border: 1px solid lighten($grey, 20%)
