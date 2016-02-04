@@ -1,0 +1,23 @@
+.button
+  background: $blue
+  background: linear-gradient(to right, lighten($blue, 10%) 0%, $blue 100%)
+  border: none
+  color: $white
+  cursor: pointer
+  display: inline-block
+  font-family: inherit
+  font-size: 20px
+  font-weight: 300
+  margin-top: 10px
+  padding: 17px 20px 20px
+  user-select: none
+  min-width: 300px
+  &:hover
+    background: linear-gradient(to right, lighten($blue, 5%), darken($blue, 5%) 100%)
+    color: $white
+  &:focus
+    background: linear-gradient(to right, $blue, darken($blue, 10%) 100%)
+    outline: 1px solid darken($blue, 15%)
+  &[disabled]
+    opacity: 0.5
+    pointer-events: none

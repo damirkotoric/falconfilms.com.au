@@ -1,0 +1,24 @@
+.confirmation
+  display: none
+  align-items: center
+  min-height: 100vh
+  padding-top: 30px
+  padding-bottom: 30px
+  +susy-breakpoint($breakpoint-2...)
+    padding-top: 60px
+    padding-bottom: 60px
+
+  .-contact-form-submitted &
+    display: flex
+    animation: bounceIn 0.3s
+
+  &.-hidden
+    animation: bounceOut 0.3s
+
+.confirmation__intro
+  @extend .standard-section
+
+.confirmation__confirmation-lolz
+  margin-top: 30px
+  +susy-breakpoint($breakpoint-2...)
+    margin-top: 60px

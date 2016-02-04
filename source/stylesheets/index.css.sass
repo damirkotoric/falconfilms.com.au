@@ -7,8 +7,10 @@
 @import "utilities/reset"
 @import "utilities/colors"
 @import "utilities/helpers"
+@import "utilities/animations"
 
 @import "modules/standard_section"
+@import "modules/button"
 @import "modules/hero"
 @import "modules/icon"
 @import "modules/introduction"
@@ -21,8 +23,15 @@
 @import "modules/location"
 @import "modules/pilot"
 @import "modules/footer"
+@import "modules/modal"
+@import "modules/confirmation"
 
 @import "vendor/polyfill.object-fit"
+
+html
+  &.-modal-visible
+    &, body
+      overflow: hidden
 
 body
   font-family: Lato, "Helvetica Neue", Helvetica, sans-serif
@@ -46,7 +55,7 @@ h3
   +susy-breakpoint($breakpoint-2...)
     font-size: 25px
 
-p, ul
+p, ul, label, input, textarea, select
   color: $grey
   font-size: 14px
   font-weight: 300
@@ -55,6 +64,32 @@ p, ul
   +susy-breakpoint($breakpoint-2...)
     font-size: 20px
     font-weight: 200
+
+label
+  display: block
+  margin-bottom: 10px
+
+input, textarea, select
+  border: 1px solid lighten($grey, 40%)
+  font-weight: 300
+  padding: 15px 20px
+  &:focus
+    outline: none
+    border: 1px solid lighten($grey, 20%)
+
+button
+  @extend .button
+
+select
+  background-image: url(/images/select-down-arrow.svg)
+  background-repeat: no-repeat
+  background-position: 95% 50%
+  display: block
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  border-radius: 0
+  position: relative
 
 a
   color: $blue

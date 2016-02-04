@@ -2,10 +2,46 @@
 title: Aerial Drone Photography and Video Footage for Melbourne, Geelong and The Great Ocean Road | Falcon Films
 ---
 
+<section class="modal" id="enquiry-modal">
+  <div>
+    <a href="#" class="modal__close"><img src="/images/back.svg" alt="Back" /></a>
+    <h2>Alright, let's do this!</h2>
+    <form class="modal__form" action="https://docs.google.com/forms/d/104wVRYLXi3peQeJCPcxxRgbZQcKPcD3jEQbOEb8k-rI/formResponse" method="POST" id="ss-form" target="_self" onsubmit="">
+      <label for="email">First, what's your email address so I can get back to you?</label>
+      <input type="email" name="entry.1145370905" value="" class="ss-q-short" id="email" dir="auto" aria-label="Email address  " title="" required="">
+      <label for="location">Where would you like to shoot the aerial footage?</label>
+      <input type="text" name="entry.419837038" value="" class="ss-q-short" id="location" dir="auto" aria-label="Shoot location  " title="">
+      <label for="package">What package are you interested in?</label>
+      <select id="package" name="entry.1036166132">
+        <option>Free</option>
+        <option>Professional $500</option>
+        <option>Bespoke $2,000+</option>
+      </select>
+      <label for="details">Fire away with all the details. What kind of project is it? How quick of a turnaround time do you need? Do you know exactly what you're after, or would you like me to give you some examples?</label>
+      <textarea name="entry.1199501587" id="details" rows="8" cols="40"></textarea>
+      <input type="hidden" name="draftResponse" value="[,,&quot;3959295140468234683&quot;]
+      ">
+      <input type="hidden" name="pageHistory" value="0">
+      <input type="hidden" name="fvv" value="0">
+      <input type="hidden" name="fbzx" value="3959295140468234683">
+      <button class="expand" type="submit" name="name">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<section class="confirmation">
+  <div class="confirmation__intro">
+    <h1>Thank you for getting in touch.</h1>
+    <p>I should take no longer than 24 hours to get back to you. Usually you'll get a response within a few hours. I look forward to talking to you :)</p>
+    <p>- Damir</p>
+    <button class="confirmation__confirmation-lolz" type="button" name="button">Okay</button>
+  </div>
+</section>
+
 <section class="hero">
   <img class="hero__logo" src="/images/logo-white.svg" alt="" />
   <img class="hero__image" src="/images/hero.jpg" alt="" />
-  <!-- <video class="hero__video" src="/videos/hero.mp4" preload autoplay muted loop poster="/images/hero.jpg"></video> -->
+  <video class="hero__video" src="/videos/hero.mp4" preload autoplay muted loop poster="/images/hero.jpg"></video>
 </section>
 
 <section class="introduction">
@@ -99,7 +135,7 @@ title: Aerial Drone Photography and Video Footage for Melbourne, Geelong and The
           <li>One short 15-second film</li>
           <li>720p resolution video</li>
         </ul>
-        <a class="package__button" href="mailto:damirkotoric@gmail.com?subject=Enquiry regarding the free package">Order</a>
+        <a class="package__button" href="#" data-trigger-modal="enquiry-modal" id="enquire-free">Enquire</a>
       </div>
     </div>
     <div class="package">
@@ -114,7 +150,7 @@ title: Aerial Drone Photography and Video Footage for Melbourne, Geelong and The
           <li>Music included</li>
           <li>Copy of all original footage</li>
         </ul>
-        <a class="package__button" href="mailto:damirkotoric@gmail.com?subject=Enquiry regarding the professional package">Order</a>
+        <a class="package__button" href="#" data-trigger-modal="enquiry-modal" id="enquire-professional">Enquire</a>
       </div>
     </div>
     <div class="package">
@@ -130,7 +166,7 @@ title: Aerial Drone Photography and Video Footage for Melbourne, Geelong and The
           <li>Copy of all original footage</li>
           <li>Practice shot before the day</li>
         </ul>
-        <a class="package__button" href="mailto:damirkotoric@gmail.com?subject=Enquiry regarding bespoke work">Order</a>
+        <a class="package__button" href="#" data-trigger-modal="enquiry-modal" id="enquire-bespoke">Enquire</a>
       </div>
     </div>
   </div>
