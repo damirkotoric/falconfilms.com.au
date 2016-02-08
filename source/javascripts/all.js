@@ -28,6 +28,7 @@ $(document).ready(function() {
   $(".modal__close").on("click", closeModal)
   $("#ss-form").on("submit", submitForm)
   $(".confirmation__confirmation-lolz").on("click", confirmationClose)
+  $(".navigation a").on("click", scrollNavigate)
 });
 
 function modalTrigger(event) {
@@ -48,12 +49,14 @@ function modalTrigger(event) {
       break
   }
   $("#email").focus()
+  $(".modal").attr("data-return-to", $trigger.closest("section").attr("id"))
 }
 
 function closeModal(event) {
   event.preventDefault()
   $("html").removeClass("-modal-visible")
-  $('html, body').scrollTop($("#pricing").offset().top);
+  var scrollToElementId = $(".modal").attr("data-return-to")
+  $('html, body').scrollTop($("#"+scrollToElementId).offset().top)
 }
 
 function submitForm(event) {
@@ -77,4 +80,16 @@ function submitForm(event) {
 
 function confirmationClose(event) {
   $("html").removeClass("-contact-form-submitted")
+}
+
+function scrollNavigate(event) {
+  event.preventDefault()
+  var attr = $(event.currentTarget).attr("data-trigger-modal")
+  if (typeof attr !== typeof undefined && attr !== false) {
+    // Modal nav
+  } else {
+    // Standard nav
+    scrollToId = $(event.currentTarget).attr("href")
+    $("html,body").animate({scrollTop: $(scrollToId).offset().top}, 300);
+  }
 }
