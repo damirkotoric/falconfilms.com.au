@@ -28,13 +28,19 @@ $(document).ready(function() {
   $(".modal__close").on("click", closeModal)
   $("#ss-form").on("submit", submitForm)
   $(".confirmation__confirmation-lolz").on("click", confirmationClose)
-  $(".navigation a").on("click", scrollNavigate)
+  $(".navigation > ul > li > a, .navigation__logo").on("click", scrollToElement)
+  $(".navigation__trigger").on("click", triggerNavigation)
+  $(window).on("scroll", pageScrolling)
+
+  // Do stuff on init
+  FastClick.attach(document.body);
 });
 
 function modalTrigger(event) {
   event.preventDefault()
   $trigger = $(event.currentTarget)
   $packageSelectBox = $("#package")
+  $(".modal").attr("data-return-to", $(window).scrollTop())
   $("html").toggleClass("-modal-visible")
   window.scrollTo(0, 0)
   switch ($trigger.attr("id")) {
@@ -48,15 +54,14 @@ function modalTrigger(event) {
       $packageSelectBox.prop("selectedIndex", 2)
       break
   }
-  $("#email").focus()
-  $(".modal").attr("data-return-to", $trigger.closest("section").attr("id"))
 }
 
 function closeModal(event) {
   event.preventDefault()
   $("html").removeClass("-modal-visible")
-  var scrollToElementId = $(".modal").attr("data-return-to")
-  $('html, body').scrollTop($("#"+scrollToElementId).offset().top)
+  var returnTo = $(".modal").attr("data-return-to")
+  console.log(returnTo)
+  $('html, body').scrollTop(returnTo)
 }
 
 function submitForm(event) {
@@ -72,6 +77,7 @@ function submitForm(event) {
       // Because of 'Access-Control-Allow-Origin' stupidity I have to bind
       // to the 'error' listener and hope that the request went through okay anyway.
       $("html").removeClass("-modal-visible").addClass("-contact-form-submitted")
+      $("html").removeClass("-nav-expanded -nav-fixed")
       $form.find("button[type='submit']").attr("disabled", false).text("Sending Enquiry")
       window.scrollTo(0, 0)
     }
@@ -82,7 +88,7 @@ function confirmationClose(event) {
   $("html").removeClass("-contact-form-submitted")
 }
 
-function scrollNavigate(event) {
+function scrollToElement(event) {
   event.preventDefault()
   var attr = $(event.currentTarget).attr("data-trigger-modal")
   if (typeof attr !== typeof undefined && attr !== false) {
@@ -90,6 +96,31 @@ function scrollNavigate(event) {
   } else {
     // Standard nav
     scrollToId = $(event.currentTarget).attr("href")
-    $("html,body").animate({scrollTop: $(scrollToId).offset().top}, 300);
+    $("html,body").animate({scrollTop: $(scrollToId).offset().top}, 300)
+    $("html").removeClass("-nav-expanded")
+    $(".page").off("touchmove")
+  }
+}
+
+function triggerNavigation(event) {
+  event.preventDefault()
+  $html = $("html")
+  $html.toggleClass("-nav-expanded")
+  if ($html.hasClass("-nav-expanded")) {
+    $(".page").on("touchmove", function(event) {
+      event.preventDefault()
+    })
+  } else {
+    $(".page").off("touchmove")
+  }
+}
+
+function pageScrolling(event) {
+  $hero = $("#hero")
+  $html = $("html")
+  if($(window).scrollTop() > $hero.height() - 30 && !$html.hasClass("-nav-expanded")) {
+    $html.addClass("-nav-fixed")
+  } else {
+    $html.removeClass("-nav-fixed")
   }
 }

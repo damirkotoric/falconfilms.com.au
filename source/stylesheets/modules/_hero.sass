@@ -12,7 +12,7 @@
 .hero__logo
   position: absolute
   left: 50%
-  top: 40%
+  top: 50%
   margin-left: -80px
   margin-top: -100px
   opacity: 1
@@ -22,12 +22,19 @@
     margin-left: -100px
     margin-top: -110px
     width: 200px
+  +susy-breakpoint($breakpoint-2...)
+    top: 40%
 
 .hero__nav
-  bottom: 20px
   position: absolute
   z-index: 2
+  top: 0
   width: 100%
+  .-nav-visible &
+    height: 100%
+  +susy-breakpoint($breakpoint-2...)
+    bottom: 20px
+    top: inherit
 
 .hero__image, .hero__video
   min-height: 100%
