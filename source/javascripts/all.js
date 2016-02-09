@@ -80,6 +80,7 @@ function submitForm(event) {
       $("html").removeClass("-nav-expanded -nav-fixed")
       $form.find("button[type='submit']").attr("disabled", false).text("Sending Enquiry")
       window.scrollTo(0, 0)
+      $(".page").off("touchmove")
     }
   })
 }
