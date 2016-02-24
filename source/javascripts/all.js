@@ -30,6 +30,7 @@ $(document).ready(function() {
   $(".confirmation__confirmation-lolz").on("click", confirmationClose)
   $(".navigation > ul > li > a, .navigation__logo").on("click", scrollToElement)
   $(".navigation__trigger").on("click", triggerNavigation)
+  $(".hero__showreel").on("click", triggerShowreel)
   $(window).on("scroll", pageScrolling)
 
   // Do stuff on init
@@ -123,5 +124,13 @@ function pageScrolling(event) {
     $html.addClass("-nav-fixed")
   } else {
     $html.removeClass("-nav-fixed")
+  }
+}
+
+function triggerShowreel(event) {
+  event.preventDefault()
+  if (screenfull.enabled) {
+    screenfull.request()
+    $("html").addClass("-showreel-fullscreen")
   }
 }

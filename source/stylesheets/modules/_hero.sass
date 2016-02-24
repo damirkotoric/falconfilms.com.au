@@ -1,29 +1,62 @@
 .hero
   background: $sapphire
-  height: 70vh
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  min-height: 70vh
   overflow: hidden
   position: relative
   user-select: none
   -ms-user-select: none
   -webkit-user-select: none
   +susy-breakpoint($breakpoint-1...)
+    min-height: 100vh
+  .-showreel-fullscreen &
     height: 100vh
 
 .hero__logo
-  position: absolute
-  left: 50%
-  top: 50%
-  margin-left: -80px
-  margin-top: -100px
+  display: block
   opacity: 1
-  width: 160px
+  width: 140px
   z-index: 2
+  margin-top: 100px
+  pointer-events: none
   +susy-breakpoint($breakpoint-1...)
-    margin-left: -100px
-    margin-top: -110px
     width: 200px
   +susy-breakpoint($breakpoint-2...)
-    top: 40%
+    margin-top: -50px
+  +susy-breakpoint($breakpoint-4...)
+    width: 260px
+
+.hero__showreel
+  color: $white
+  cursor: pointer
+  display: block
+  margin-top: 50px
+  opacity: 1
+  padding: 40px 20px
+  z-index: 2
+  font-size: 16px
+  font-weight: 100
+  line-height: 52px
+  &:hover
+    color: $white
+    opacity: 0.8
+  &:active
+    opacity: 0.5
+    transition: none
+  +susy-breakpoint($breakpoint-1...)
+  +susy-breakpoint($breakpoint-2...)
+    font-size: 20px
+  +susy-breakpoint($breakpoint-3...)
+  img
+    vertical-align: middle
+    margin-top: -3px
+    margin-right: 10px
+    width: 30px
+    +susy-breakpoint($breakpoint-2...)
+      width: 40px
 
 .hero__nav
   position: absolute
@@ -55,3 +88,5 @@
   z-index: 1
   .no-touchevents &
     display: block
+  .-showreel-fullscreen &
+    z-index: 100
