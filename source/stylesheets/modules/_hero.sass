@@ -39,8 +39,9 @@
   cursor: pointer
   display: block
   margin-top: 50px
-  opacity: 1
+  opacity: 0.5
   padding: 40px 20px
+  pointer-events: none
   position: relative
   z-index: 2
   font-size: 16px
@@ -52,6 +53,9 @@
   &:active
     opacity: 0.5
     transition: none
+  &.-enabled
+    opacity: 1
+    pointer-events: auto
   +susy-breakpoint($breakpoint-1...)
   +susy-breakpoint($breakpoint-2...)
     font-size: 20px

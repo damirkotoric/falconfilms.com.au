@@ -24,6 +24,7 @@ jQuery(function($) {
 
 var $heroShowreel
 var videoId
+var videoPlayer
 $(document).ready(function() {
   // Listeners
   $("[data-trigger-modal]").on("click", modalTrigger)
@@ -32,25 +33,46 @@ $(document).ready(function() {
   $(".confirmation__confirmation-lolz").on("click", confirmationClose)
   $(".navigation > ul > li > a, .navigation__logo").on("click", scrollToElement)
   $(".navigation__trigger").on("click", triggerNavigation)
-  $(".hero__showreel-link").on("click", playShowreel)
+  $(".hero").on("click", ".hero__showreel-link.-enabled", playShowreel)
   $(window).on("scroll", pageScrolling)
-  $(window).on("webkitfullscreenchange mozfullscreenchange fullscreenchange", exitFullscreen)
 
   // Do stuff on init
-  $heroShowreel = $("#hero__showreel")
-  $heroShowreel[0].src += "&autoplay=1"
-  var src = $($heroShowreel[0]).attr("src")
-  videoId = youtube_parser(src)
-  $("#hero__showreel").remove()
   FastClick.attach(document.body);
-});
 
-// http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
-function youtube_parser(url){
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
-    var match = url.match(regExp)
-    return (match&&match[7].length==11)? match[7] : false
-}
+  if (screenfull.enabled) {
+    document.addEventListener(screenfull.raw.fullscreenchange, fullscreenChanged);
+    // create youtube player
+    window.onYouTubePlayerAPIReady = function () {
+      $(".hero__showreel-link").addClass("-enabled")
+      videoPlayer = new YT.Player('hero__showreel', {
+        height: '390',
+        width: '640',
+        videoId: $("#hero__showreel").attr("data-youtube-id"),
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        },
+        playerVars: {
+           wmode: "opaque",
+           autoplay: 0,
+           controls: 0,
+           showInfo: 0,
+           rel: 0
+         }
+      })
+    }
+    function onPlayerReady(event) {
+    }
+    // when video ends
+    function onPlayerStateChange(event) {
+      if(event.data === 0) {
+        screenfull.exit()
+      }
+    }
+  } else {
+    $(".hero__showreel-link").addClass("-enabled")
+  }
+});
 
 function modalTrigger(event) {
   event.preventDefault()
@@ -143,22 +165,18 @@ function pageScrolling(event) {
 }
 
 function playShowreel(event) {
-  event.preventDefault()
+  console.log(screenfull.enabled)
   if (screenfull.enabled) {
+    event.preventDefault()
     screenfull.request()
-    $("#hero").append($heroShowreel)
+    videoPlayer.playVideo()
     $("html").addClass("-showreel-fullscreen")
-  } else {
-    window.open("https://youtube.com/watch?v="+videoId, '_blank')
   }
 }
 
-function exitFullscreen(event) {
-  var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen
-  var event = state ? "FullscreenOn" : "FullscreenOff"
-
-  if (event == "FullscreenOff") {
-    $("#hero__showreel").remove()
+function fullscreenChanged(event) {
+  if (!screenfull.isFullscreen) {
+    videoPlayer.stopVideo()
     $("html").removeClass("-showreel-fullscreen")
   }
 }
