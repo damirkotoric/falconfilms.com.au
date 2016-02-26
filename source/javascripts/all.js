@@ -22,6 +22,8 @@ jQuery(function($) {
   });
 });
 
+var $heroShowreel
+var videoId
 $(document).ready(function() {
   // Listeners
   $("[data-trigger-modal]").on("click", modalTrigger)
@@ -30,12 +32,25 @@ $(document).ready(function() {
   $(".confirmation__confirmation-lolz").on("click", confirmationClose)
   $(".navigation > ul > li > a, .navigation__logo").on("click", scrollToElement)
   $(".navigation__trigger").on("click", triggerNavigation)
-  $(".hero__showreel").on("click", triggerShowreel)
+  $(".hero__showreel-link").on("click", playShowreel)
   $(window).on("scroll", pageScrolling)
+  $(window).on("webkitfullscreenchange mozfullscreenchange fullscreenchange", exitFullscreen)
 
   // Do stuff on init
+  $heroShowreel = $("#hero__showreel")
+  $heroShowreel[0].src += "&autoplay=1"
+  var src = $($heroShowreel[0]).attr("src")
+  videoId = youtube_parser(src)
+  $("#hero__showreel").remove()
   FastClick.attach(document.body);
 });
+
+// http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+    var match = url.match(regExp)
+    return (match&&match[7].length==11)? match[7] : false
+}
 
 function modalTrigger(event) {
   event.preventDefault()
@@ -127,10 +142,23 @@ function pageScrolling(event) {
   }
 }
 
-function triggerShowreel(event) {
+function playShowreel(event) {
   event.preventDefault()
   if (screenfull.enabled) {
     screenfull.request()
+    $("#hero").append($heroShowreel)
     $("html").addClass("-showreel-fullscreen")
+  } else {
+    window.open("https://youtube.com/watch?v="+videoId, '_blank')
+  }
+}
+
+function exitFullscreen(event) {
+  var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen
+  var event = state ? "FullscreenOn" : "FullscreenOff"
+
+  if (event == "FullscreenOff") {
+    $("#hero__showreel").remove()
+    $("html").removeClass("-showreel-fullscreen")
   }
 }

@@ -10,6 +10,7 @@
   user-select: none
   -ms-user-select: none
   -webkit-user-select: none
+  text-align: center
   +susy-breakpoint($breakpoint-1...)
     min-height: 100vh
   .-showreel-fullscreen &
@@ -20,8 +21,12 @@
   opacity: 1
   width: 140px
   z-index: 2
-  margin-top: 100px
+  margin-top: 150px
   pointer-events: none
+  position: relative
+  .no-flexbox &
+    display: inline-block
+    margin-top: 100px
   +susy-breakpoint($breakpoint-1...)
     width: 200px
   +susy-breakpoint($breakpoint-2...)
@@ -29,13 +34,14 @@
   +susy-breakpoint($breakpoint-4...)
     width: 260px
 
-.hero__showreel
+.hero__showreel-link
   color: $white
   cursor: pointer
   display: block
   margin-top: 50px
   opacity: 1
   padding: 40px 20px
+  position: relative
   z-index: 2
   font-size: 16px
   font-weight: 100
@@ -88,5 +94,14 @@
   z-index: 1
   .no-touchevents &
     display: block
+
+.hero__showreel
+  display: none
   .-showreel-fullscreen &
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
     z-index: 100
