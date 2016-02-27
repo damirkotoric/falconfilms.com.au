@@ -34,6 +34,7 @@ $(document).ready(function() {
   $(".navigation > ul > li > a, .navigation__logo").on("click", scrollToElement)
   $(".navigation__trigger").on("click", triggerNavigation)
   $(".hero").on("click", ".hero__showreel-link.-enabled", playShowreel)
+  $(".hero__showreel-clicker").on("dblclick", function () { screenfull.exit() })
   $(window).on("scroll", pageScrolling)
 
   // Do stuff on init
