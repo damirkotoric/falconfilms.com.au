@@ -1,4 +1,9 @@
-//= require_tree .
+//= require screenfull
+//= require player_api
+//= require fastclick
+//= require modernizr
+//= require jquery
+//= require_self
 
 // http://davidlesches.com/blog/making-browsers-play-nice-with-thin-fonts
 jQuery(function($) {
